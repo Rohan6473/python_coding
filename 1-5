@@ -1,0 +1,156 @@
+https://prepinsta.com/accenture/coding/---> PREPINISTA
+
+                Question 1: Rat Count House--->
+
+def calculate (r, unit, arr, n):
+    if n == 0:
+        return -1 
+        
+    totalFoodRequired = r * unit 
+    foodTillNow = 0 
+    house = 0 
+        
+    for house in range (n):
+        foodTillNow += arr[house] 
+        if foodTillNow>=totalFoodRequired:
+            break 
+    if totalFoodRequired > foodTillNow:
+        return 0
+    return house + 1
+	  
+r = int (input ())
+unit = int (input ())
+n = int (input ())
+  
+arr = list (map (int, input ().split ()))
+print (calculate (r, unit, arr, n))
+-----------------------------------------------------------------------------------------------------------------------
+def fun(r,u,l):
+    a=r*u
+    c=0
+    s=0
+    k=[]
+    for i in l:
+        k.append(i)
+        if sum(k)>a:
+            return 'k '+str(k)
+r=7
+u=2
+l=[2,8,3,5,7,4,1,2]
+print(fun(r,u,l))
+                =-------------------------------------------------------------------------------------------------
+CONCENTRATE ON THIS INCLUDING COMMANDS
+
+
+def food_for_rats(r, unit, arr):
+    # Check if the array is None
+    if arr is None:
+        return -1
+    
+    # Calculate total food required by all rats
+    total_food_needed = r * unit
+    
+    # Calculate total available food
+    total_available_food = sum(arr)
+    
+    # Check if food is insufficient
+    if total_available_food < total_food_needed:
+        return 0
+    
+    # Find the minimum number of houses needed to satisfy the food requirement
+    cumulative_food = 0
+    house_count = 0
+    
+    for food in arr:
+        cumulative_food += food
+        house_count += 1
+        if cumulative_food >= total_food_needed:
+            return house_count
+    
+    # In case all houses are required (though it should be covered by the above code)
+    return house_count
+===================================================================================================================================================================
+Question 2:
+
+a = "0A0B0C0"                         If str is NULL or None (in case of Python), return -1
+b = int(a[0])
+
+for i in range(1, len(a), 2):                 //& bitwise operator
+    if a[i] == 'C':                        
+        b ^= int(a[i+1])
+    elif a[i] == 'A':                       //   && logical operator (0 or 1) IN PYTHON WE USE AS AND
+        b &= int(a[i+1])
+    elif a[i] == 'B':
+        b |= int(a[i+1])
+
+print(b)  # Expected output: 0
+
+{
+a = True
+b = False
+result = a and b  # result is False, since b is False
+print(result)     # Output: False
+}
+
+{
+a = 5    # Binary: 0101
+b = 3    # Binary: 0011
+result = a & b  # result is 1 (Binary: 0001)
+print(result)   # Output: 1
+}
+======================================================================================================================================================================
+                                          Question 3: Password Checker
+
+def fun(s):
+    # Initialize counters
+    contains_upper = False
+    contains_digit = False
+    
+    # Check if the first character is a digit
+    if s[0].isdigit():
+        return 0
+    
+    # Check for spaces or slashes
+    if ' ' in s or '/' in s:                          check s for bothhhhh
+        return 0
+    
+    # Check for uppercase and numeric characters
+    for char in s:
+        if char.isupper():
+            contains_upper = True
+        if char.isdigit():
+            contains_digit = True
+    
+    # Final check for all conditions
+    if len(s) >= 4 and contains_upper and contains_digit:
+        return 1  # Valid password
+    else:
+        return 0  # Invalid password
+
+# Test cases
+print(fun("AbcdEf"))       # Expected output: 0 (no digit)
+print(fun("aA1_67"))       # Expected output: 1 (valid)
+print(fun("a987 abC012"))  # Expected output: 0 (contains space)
+print(fun("1abcD"))        # Expected output: 0 (starts with a digit)
+print(fun("MyP@ssw0rd123")) # Expected output: 1 (valid)
+=======================================================================================================================================================================
+                                               Question 4:
+def findCount(arr, num, diff):
+    count = 0
+
+    # Loop through each element in arr
+    for element in arr:
+        if abs(element - num) <= diff:
+            count += 1
+
+    # Return -1 if no elements satisfy the condition
+    return count if count > 0 else -1
+
+# Example usage
+arr = [12, 3, 14, 56, 77, 13]
+num = 13
+diff = 2
+print(findCount(arr, num, diff))  # Expected output: 3
+================================================================================================================================================================================
+
+
