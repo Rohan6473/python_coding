@@ -1,0 +1,74 @@
+                                                  Question:11
+
+ def swap_characters(s, a, b):
+    res = ''
+    for i in s:
+        if i == a:
+            res += b
+        elif i == b:
+            res += a
+        else:
+            res += i
+    return res
+
+# Test cases
+print(swap_characters('apples', 'a', 'p'))  # Expected output: "paales"
+print(swap_characters('hello', 'x', 'y'))   # Expected output: "hello"
+print(swap_characters('apple', 'a', 'z'))   # Expected output: "zpple"
+print(swap_characters('aaaa', 'a', 'b'))    # Expected output: "bbbb"
+print(swap_characters('', 'a', 'p'))        # Expected output: ""
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+def swap_characters(s, a, b):
+    # Create a translation table where 'a' is mapped to 'b' and 'b' to 'a'
+    translation_table = str.maketrans({a: b, b: a})                                       [TRANSLATE]
+    
+    # Use the translate method with the translation table
+    return s.translate(translation_table)
+
+# Test cases
+print(swap_characters('apples', 'a', 'p'))  # Expected output: "paales"
+print(swap_characters('hello', 'x', 'y'))   # Expected output: "hello"
+print(swap_characters('apple', 'a', 'z'))   # Expected output: "zpple"
+print(swap_characters('aaaa', 'a', 'b'))    # Expected output: "bbbb"
+print(swap_characters('', 'a', 'p'))        # Expected output: ""
+======================================================================================================================================================================
+                     Question:13
+
+a = 7
+b = 12
+m = 0
+res = 0
+
+for i in range(a, b + 1):
+    c = 0
+    p = i
+    while i % 2 == 0:
+        i = i // 2
+        c += 1
+    if c > m:
+        m = c
+        res = p
+
+print(m, res)  # Expected output for m: 3, res: 8
+=============================================================================================================================
+                  question 20:
+
+                  def FindAutoCount(n):
+    if n is None or len(n) == 0:
+        return 0
+    
+    co = 0
+    for i in range(len(n)):
+        c = n.count(str(i))
+        
+        if str(c) == n[i]:
+            co += 1
+            
+    if co == len(n):
+        return len(set(n))  # Return number of unique digits
+    else:
+        return 0
+
+# Test case
+print(FindAutoCount("0000"))  # Output: 0, because it's not an autobiographical number
+
