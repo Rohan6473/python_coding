@@ -1,1 +1,107 @@
+           Question:6
+def LargeSmallSum(arr):
+    # Handle edge cases
+    if not arr or len(arr) <= 3:
+        return 0
+
+    even_positions = []
+    odd_positions = []
+
+    # Separate elements into even and odd positioned lists
+    for i in range(len(arr)):
+        if i % 2 == 0:
+            even_positions.append(arr[i])  # Even positions
+        else:
+            odd_positions.append(arr[i])    # Odd positions
+
+    # Sort the lists
+    even_positions.sort()
+    odd_positions.sort()
+
+    # Check if we have enough elements
+    if len(even_positions) < 2 or len(odd_positions) < 2:
+        return 0  # Return 0 if there's not enough elements to find second largest or smallest
+
+    # Get the second largest from even positions and second smallest from odd positions
+    second_largest_even = even_positions[-2]
+    second_smallest_odd = odd_positions[1]
+
+    # Return the sum
+    return second_largest_even + second_smallest_odd
+
+# Example usage
+n = [3, 2, 1, 7, 5, 4]
+print(LargeSmallSum(n))  # Expected output: 7
+======================================================================================================================================================
+                                                           Question:8
+
+def DectoNBase(n, num):
+    # Check if n is within the valid range
+    if not (1 < n <= 36):
+        return None
+    
+    # Characters for base representation
+    symbols = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    
+    # Result string for the n-base representation
+    result = ""
+    
+    # Convert decimal to n-base
+    while num > 0:
+        remainder = num % n  # Get remainder
+        result = symbols[remainder] + result  # Prepend the symbol for the remainder
+        num //= n  # Integer division
+    
+    return result if result else "0"  # Handle case where num was 0
+
+# Example usage
+n = 12
+num = 718
+print(DectoNBase(n, num))  # Expected output: "4A2"
+=======================================================================================================================================================================
+                                                                  Question:9
+
+a = 'kk-l-ppp-op-pi-o-'  # Input string
+r = ''                   # String to accumulate hyphens
+h = ''                   # String to accumulate non-hyphen characters
+
+for i in a:
+    if i == '-':
+        r += i           # Add hyphen to the hyphen string
+    else:
+        h += i           # Add non-hyphen character to the non-hyphen string
+
+print(r + h)            # Print hyphens followed by non-hyphen characters
+=======================================================================================================================================================================
+                                                                  Question:10
+
+def NumberOfCarries(num1, num2):
+    count = 0          # Initialize carry occurrences
+    carry_over = 0     # Initialize carry for next digit
+
+    while num1 > 0 or num2 > 0 or carry_over > 0:
+        # Get the last digit of each number
+        digit1 = num1 % 10
+        digit2 = num2 % 10
+        
+        # Calculate the sum of the digits and the carry
+        total = digit1 + digit2 + carry_over
+        
+        # If total is 10 or more, we have a carry
+        if total >= 10:
+            count += 1
+            carry_over = 1  # Set carry for next addition
+        else:
+            carry_over = 0  # Reset carry if no carry is generated
+        
+        # Remove the last digit from each number
+        num1 //= 10
+        num2 //= 10
+
+    return count
+
+# Example usage
+print(NumberOfCarries(451, 349))  # Expected output: 2
+print(NumberOfCarries(23, 563))    # Expected output: 1
+=======================================================================================================================================================================
 
